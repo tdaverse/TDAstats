@@ -1,7 +1,7 @@
 Package: TDAstats
 Type: Package
 Title: Pipeline for Topological Data Analysis
-Version: 0.4.2
+Version: 0.4.2.9000
 Authors@R: c(
     person("Raoul", "Wadhwa", role = "aut"),
     person("Andrew", "Dhawan", role = "aut"),
@@ -44,4 +44,5 @@ Suggests: testthat (>= 2.0.0),
     rmarkdown,
     covr
 VignetteBuilder: knitr
+Config/roxygen2/markdown: TRUE
 Config/roxygen2/version: 8.1.0
