@@ -1,4 +1,4 @@
-# TDAstats 0.4.3
+# next version
 
 Internal use of the deprecated `ggplot2::aes_string(<aes> = <var>)` has been replaced with `ggplot2::aes(<aes> = .data[["<var>"]])` (@SpatLyu, #27).
 
