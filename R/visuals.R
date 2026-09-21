@@ -58,12 +58,12 @@ plot_persist <- function(feature.matrix, flat = FALSE,
     g <- ggplot2::ggplot(data = feature.df) +
       ggplot2::xlim(axes.min, axes.max) + ggplot2::ylim(axes.min, axes.max) +                           # axis limits
       ggplot2::geom_abline(slope = 1, intercept = 0) +  # reference line
-      #ggplot2::geom_path(data = df.geompath, ggplot2::aes_string(x = "x", y = "y")) +          # reference segment
+      #ggplot2::geom_path(data = df.geompath, ggplot2::aes(x = .data[["x"]], y = .data[["y"]])) +          # reference segment
       ggplot2::xlab("Feature appearance") + ggplot2::ylab("Feature disappearance") +                                 # axis titles
       ggplot2::theme(axis.line = ggplot2::element_line(colour = "black"),                               # add axis lines
                      panel.grid.major = ggplot2::element_blank(), panel.grid.minor = ggplot2::element_blank(),         # remove gridlines
                      panel.background = ggplot2::element_blank()) +                                           # remove default background color
-     ggplot2::geom_point(ggplot2::aes_string(x = "birth", y = "death", shape = "dimension", colour = "dimension")) +   # add features as points
+     ggplot2::geom_point(ggplot2::aes(x = .data[["birth"]], y = .data[["death"]], shape = .data[["dimension"]], colour = .data[["dimension"]])) +   # add features as points
       ggplot2::coord_fixed(ratio = 1)
     
     # add line for bootstrap if desired
@@ -77,7 +77,7 @@ plot_persist <- function(feature.matrix, flat = FALSE,
   else {
     feature.df$persistence <- feature.df$death - feature.df$birth
     g <- ggplot2::ggplot(data = feature.df) +
-      ggplot2::geom_point(ggplot2::aes_string(x = "birth", y = "persistence", shape = "dimension", colour = "dimension")) +
+      ggplot2::geom_point(ggplot2::aes(x = .data[["birth"]], y = .data[["persistence"]], shape = .data[["dimension"]], colour = .data[["dimension"]])) +
       ggplot2::xlab("Feature appearance") +
       ggplot2::ylab("Feature persistence") +
       ggplot2::theme(axis.line = ggplot2::element_line(colour = "black"),
@@ -152,7 +152,7 @@ plot_barcode <- function(feature.matrix) {
                         axis.line.y = ggplot2::element_blank(), axis.ticks.y = ggplot2::element_blank(), axis.text.y = ggplot2::element_blank(), # remove y-axis stuff
                         panel.grid = ggplot2::element_blank(),                                                        # remove gridlines
                         panel.background = ggplot2::element_blank()) +                                                # remove default background color
-         ggplot2::geom_segment(ggplot2::aes_string(x = "birth", y = "vertical.pos",                                              # add actual bars for barcode
-                          xend = "death", yend = "vertical.pos",
-                          colour = "dimension"))
+         ggplot2::geom_segment(ggplot2::aes(x = .data[["birth"]], y = .data[["vertical.pos"]],                                              # add actual bars for barcode
+                          xend = .data[["death"]], yend = .data[["vertical.pos"]],
+                          colour = .data[["dimension"]]))
 }
